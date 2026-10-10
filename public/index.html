@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ScreenPass — Partner Ticketing Demo</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🎬</span>
+      <div>
+        <div class="brand-name">ScreenPass</div>
+        <div class="brand-tag">Ticketing &amp; food ordering, powered by your Cinema Partner API</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span id="modeBadge" class="badge demo">● Demo Mode</span>
+      <button id="toggleApiPanel" class="btn-ghost">Connect Live API</button>
+    </div>
+  </header>
+
+  <div class="intro-banner">
+    💡 This is a <b>live sample</b> of a partner ticketing site. It's showing made-up movies and food so you can see the idea — nothing here touches a real cinema. Click <b>"Connect Live API"</b> only if you want to prove it can book real tickets against an actual CinemaFood instance.
+  </div>
+
+  <div id="apiPanel" class="api-panel hidden">
+    <label>Base URL <input id="baseUrl" placeholder="http://localhost:5272" /></label>
+    <label>API Key <input id="apiKey" placeholder="pk_test_..." /></label>
+    <button id="saveSettings" class="btn-primary">Save &amp; Use Live API</button>
+    <button id="useDemoBtn" class="btn-ghost">Back to Demo Mode</button>
+    <span id="settingsStatus" class="status-text"></span>
+  </div>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="tickets">🎟️ Movies &amp; Tickets</button>
+    <button class="tab-btn" data-tab="food">🍿 Food Order</button>
+  </nav>
+
+  <main id="tickets" class="tab-panel active">
+    <section class="panel">
+      <div class="panel-head">
+        <h2><span class="step-num">1</span> Pick a Movie</h2>
+        <button id="loadShows" class="btn-primary">Refresh Shows</button>
+      </div>
+      <div id="showsList" class="grid movies-grid"></div>
+    </section>
+
+    <section id="seatSection" class="panel hidden">
+      <div class="panel-head">
+        <h2><span class="step-num">2</span> <span id="seatSectionTitle"></span></h2>
+      </div>
+      <div class="screen-bar">SCREEN</div>
+      <div id="seatMap" class="seat-map"></div>
+      <div class="seat-legend">
+        <span><i class="swatch vip"></i> VIP</span>
+        <span><i class="swatch premium"></i> Premium</span>
+        <span><i class="swatch regular"></i> Regular</span>
+        <span><i class="swatch sold"></i> Sold</span>
+        <span><i class="swatch selected"></i> Selected</span>
+      </div>
+      <p class="hint">Tap any open seat above, then fill in who it's for.</p>
+      <div class="booking-form">
+        <label>Customer Name <input id="custName" placeholder="Jane Doe" /></label>
+        <label>Customer Phone <input id="custPhone" placeholder="0300-1234567" /></label>
+        <button id="bookTicketBtn" class="btn-accent" disabled>Book Selected Seat</button>
+      </div>
+    </section>
+
+    <section id="ticketResultSection" class="panel result-panel hidden">
+      <h2>🎉 Booking Confirmed</h2>
+      <div id="ticketResult" class="result-card"></div>
+    </section>
+  </main>
+
+  <main id="food" class="tab-panel hidden">
+    <section class="panel">
+      <div class="panel-head">
+        <h2><span class="step-num">1</span> Who's This Order For?</h2>
+        <button id="loadMenu" class="btn-primary">Refresh Menu</button>
+      </div>
+      <p class="hint">In Demo Mode these are optional — fill them in when testing a real ticket's food order.</p>
+      <div class="booking-form">
+        <label>Ticket Reference <input id="ticketRef" placeholder="e.g. ticket token from booking" /></label>
+        <label>Screen Id <input id="screenId" type="number" value="1" /></label>
+        <label>Seat Number <input id="seatNumber" placeholder="e.g. A5" /></label>
+        <label>Show Date/Time <input id="showDateTime" type="datetime-local" /></label>
+      </div>
+      <h2 class="sub-head"><span class="step-num">2</span> Build Your Order</h2>
+      <div id="menuList" class="grid menu-grid"></div>
+    </section>
+
+    <section class="panel cart-panel">
+      <div class="panel-head">
+        <h2><span class="step-num">3</span> Review &amp; Order</h2>
+        <span id="cartTotal" class="cart-total">PKR 0</span>
+      </div>
+      <div id="cartList" class="cart-list"></div>
+      <button id="placeOrderBtn" class="btn-accent" disabled>Place Order</button>
+    </section>
+
+    <section id="orderResultSection" class="panel result-panel hidden">
+      <h2>🎉 Order Placed</h2>
+      <div id="orderResult" class="result-card"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
