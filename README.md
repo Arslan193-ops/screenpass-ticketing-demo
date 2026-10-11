@@ -5,7 +5,16 @@ with a Cinema's Partner API: browse movies, pick a seat, book a ticket, and
 order food — all through the same endpoints an external partner would use.
 
 **Live demo (GitHub Pages, Demo Mode only):**
-https://<github-username>.github.io/<repo-name>/
+https://arslan193-ops.github.io/screenpass-ticketing-demo/
+
+**Full app, including working Live API mode (Render):**
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Arslan193-ops/screenpass-ticketing-demo)
+
+Click the button above, sign in to Render (free, no card required for the
+free tier), and it deploys this repo's `render.yaml` automatically. You'll
+get a `https://screenpass-ticketing-demo.onrender.com`-style URL where both
+Demo Mode and Live API mode work (the free tier spins down after 15 minutes
+of inactivity, so the first request after a while takes ~30s to wake up).
 
 ## Modes
 
@@ -13,10 +22,11 @@ https://<github-username>.github.io/<repo-name>/
   backend required. This is what's deployed on GitHub Pages.
 - **Live API Mode** — click "Connect Live API", enter a Cinema instance's
   Base URL and Partner API key (`pk_test_...` / `pk_live_...`), and bookings
-  become real requests against that instance. This mode needs the small Node
-  proxy below running, so it only works when you run the app locally.
+  become real requests against that instance. This needs the small Node
+  proxy (`server.js`) running — either locally, or via the Render deploy
+  above. It won't work on the GitHub Pages link (static hosting only).
 
-## Running locally (required for Live Mode)
+## Running locally
 
 ```bash
 node server.js

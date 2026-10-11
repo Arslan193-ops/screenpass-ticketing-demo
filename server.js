@@ -2,10 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-// ponytail: local-only demo proxy, talks to CinSnacks dev cert (self-signed) — not for production use
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
-const PORT = 4300;
+const PORT = process.env.PORT || 4300;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css' };
 
