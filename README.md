@@ -7,14 +7,18 @@ order food — all through the same endpoints an external partner would use.
 **Live demo (GitHub Pages, Demo Mode only):**
 https://arslan193-ops.github.io/screenpass-ticketing-demo/
 
-**Full app, including working Live API mode (Render):**
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Arslan193-ops/screenpass-ticketing-demo)
+**Full app, including working Live API mode (Vercel, free, no card needed):**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Arslan193-ops/screenpass-ticketing-demo)
 
-Click the button above, sign in to Render (free, no card required for the
-free tier), and it deploys this repo's `render.yaml` automatically. You'll
-get a `https://screenpass-ticketing-demo.onrender.com`-style URL where both
-Demo Mode and Live API mode work (the free tier spins down after 15 minutes
-of inactivity, so the first request after a while takes ~30s to wake up).
+Click the button above and sign in with GitHub. Vercel serves `public/` as
+the site and runs `api/proxy/[...path].js` as a serverless function standing
+in for `server.js`'s proxy — same `/api/proxy/*` calls the frontend already
+makes, no frontend changes needed. You'll get a
+`https://screenpass-ticketing-demo.vercel.app`-style URL where both Demo
+Mode and Live API mode work.
+
+(A Render blueprint — `render.yaml` — is also in this repo if you'd rather
+use Render, but Render now requires a card on file even for its free tier.)
 
 ## Modes
 
